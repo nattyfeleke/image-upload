@@ -4,7 +4,7 @@ FROM node:18-alpine
 # Set the working directory inside the container
 WORKDIR /usr/src/app
 
-# Copy the package.json and package-lock.json files
+# Copy only package.json and package-lock.json for better caching
 COPY package*.json ./
 
 # Install dependencies
@@ -13,15 +13,11 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Run the build command
+# Build the application
 RUN npm run build
-
-# Set the working directory to the build output directory (if applicable)
-# Uncomment this if your build output is in a specific folder like `dist`
-# WORKDIR /usr/src/app/dist
 
 # Expose the application port
 EXPOSE 8080
 
-# Define the command to start the application
-CMD ["npm", "start"]
+# Command to run the application
+CMD ["node", "dist/app.js"]
