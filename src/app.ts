@@ -14,12 +14,13 @@ dotenv.config();
 // Initialize the Express app
 const app = express();
 const port = process.env.PORT || 3000;
-
+// Use the uploads directory from the root
+const uploadDir = path.resolve(process.env.UPLOADS_DIR || "uploads");
 // Multer setup for storing uploaded files
 const upload = multer({
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, process.env.UPLOADS_DIR || "uploads"); // Ensure the directory exists
+      cb(null, uploadDir); // Ensure the directory exists
     },
     filename: (req, file, cb) => {
       const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
@@ -46,7 +47,7 @@ const upload = multer({
 });
 
 // Serve static files from the uploads directory
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", express.static(uploadDir));
 app.get("/", (req: Request, res: Response) => {
   res.send("Image upload!");
 });
