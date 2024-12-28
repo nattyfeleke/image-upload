@@ -13,4 +13,4 @@ services:
     environment:
       - PORT=8080
       - UPLOADS_DIR=/usr/src/app/uploads
-    command: ["npm", "start"]
+    command: ["node", "dist/app.js"]
