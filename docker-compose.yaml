@@ -8,8 +8,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./uploads:/usr/src/app/uploads
-      - .:/usr/src/app
+      - ./uploads:/usr/src/app/uploads # Only map the uploads folder
     environment:
       - PORT=8080
       - UPLOADS_DIR=/usr/src/app/uploads
