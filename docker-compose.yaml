@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  app:
+    container_name: image-upload
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./uploads:/usr/src/app/uploads
+      - .:/usr/src/app
+    environment:
+      - PORT=3000
+      - UPLOADS_DIR=/usr/src/app/uploads
+    command: ["npm", "start"]
