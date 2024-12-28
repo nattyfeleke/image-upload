@@ -31,12 +31,15 @@ const upload = (0, multer_1.default)({
     fileFilter(req, file, cb) {
         // Accept only image files
         const allowedTypes = /jpg|jpeg|png|gif/;
-        const mimeType = allowedTypes.test(file.mimetype);
-        const extname = allowedTypes.test(path_1.default.extname(file.originalname).toLowerCase());
-        if (mimeType && extname) {
-            return cb(null, true);
-        }
-        cb(new Error("Invalid file type. Only images are allowed."));
+        // const mimeType = allowedTypes.test(file.mimetype);
+        // const extname = allowedTypes.test(
+        //   path.extname(file.originalname).toLowerCase()
+        // );
+        return cb(null, true);
+        // if (mimeType && extname) {
+        //   return cb(null, true);
+        // }
+        // cb(new Error("Invalid file type. Only images are allowed."));
     },
 });
 // Serve static files from the uploads directory

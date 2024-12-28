@@ -34,15 +34,15 @@ const upload = multer({
   fileFilter(req: Request, file: Express.Multer.File, cb: Function) {
     // Accept only image files
     const allowedTypes = /jpg|jpeg|png|gif/;
-    const mimeType = allowedTypes.test(file.mimetype);
-    const extname = allowedTypes.test(
-      path.extname(file.originalname).toLowerCase()
-    );
-
-    if (mimeType && extname) {
-      return cb(null, true);
-    }
-    cb(new Error("Invalid file type. Only images are allowed."));
+    // const mimeType = allowedTypes.test(file.mimetype);
+    // const extname = allowedTypes.test(
+    //   path.extname(file.originalname).toLowerCase()
+    // );
+    return cb(null, true);
+    // if (mimeType && extname) {
+    //   return cb(null, true);
+    // }
+    // cb(new Error("Invalid file type. Only images are allowed."));
   },
 });
 
