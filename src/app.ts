@@ -47,6 +47,9 @@ const upload = multer({
 
 // Serve static files from the uploads directory
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.get("/", (req: Request, res: Response) => {
+  res.send("Image upload!");
+});
 
 // API endpoint to upload image
 app.post(
