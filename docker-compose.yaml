@@ -6,11 +6,11 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "8080:8080"
     volumes:
       - ./uploads:/usr/src/app/uploads
       - .:/usr/src/app
     environment:
-      - PORT=3000
+      - PORT=8080
       - UPLOADS_DIR=/usr/src/app/uploads
     command: ["npm", "start"]

@@ -21,7 +21,7 @@ RUN npm run build
 # WORKDIR /usr/src/app/dist
 
 # Expose the application port
-EXPOSE 3000
+EXPOSE 8080
 
 # Define the command to start the application
 CMD ["npm", "start"]
